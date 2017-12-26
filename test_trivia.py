@@ -15,54 +15,27 @@ class MockPrint:
     def __call__(self, value):
         self.strings.append(value)
 
+    def clear(self):
+        self.strings = []
 
-class TestTrivia:
 
-    def test_roll_for_science(self):
-        game = Game()
-        game.add('Chet')
+class TestRoll:
 
-        builtins.print = MockPrint()
-        game.roll(1)
-        assert 'The category is Science' in print.strings
-
-    def test_roll_for_sports(self):
-        game = Game()
-        game.add('Chet')
-
-        builtins.print = MockPrint()
-        game.roll(2)
-        assert 'The category is Sports' in print.strings
-
-    def test_roll_for_rock(self):
-        game = Game()
-        game.add('Chet')
-
-        builtins.print = MockPrint()
-        game.roll(3)
-        assert 'The category is Rock' in print.strings
-
-    def test_roll_for_pop(self):
-        game = Game()
-        game.add('Chet')
-
-        builtins.print = MockPrint()
-        game.roll(4)
-        assert 'The category is Pop' in print.strings
+    number_by_category = {
+        1: 'Science',
+        2: 'Rock',
+        3: 'Sports',
+        4: 'Sports',
+        5: 'Rock',
+        6: 'Science',
+    }
 
     def test_roll_for_science(self):
         game = Game()
         game.add('Chet')
 
         builtins.print = MockPrint()
-        game.roll(5)
-        assert 'The category is Science' in print.strings
-
-    def test_roll_for_sports_2(self):
-        # wat?!
-        game = Game()
-        game.add('Chet')
-
-        builtins.print = MockPrint()
-        game.roll(6)
-        assert 'The category is Sports' in print.strings
+        for number, category in self.number_by_category.items():
+            game.roll(number)
+            assert f'The category is {category}' in print.strings
+            print.clear()
