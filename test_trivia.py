@@ -19,23 +19,36 @@ class MockPrint:
         self.strings = []
 
 
+class TestAdd:
+
+    def test_add_one_player(self):
+        game = Game()
+        player_name = 'Chet'
+
+        builtins.print = MockPrint()
+        game.add(player_name)
+        assert f'{player_name} was added' in print.strings
+        assert 'They are player number 1' in print.strings
+
+
 class TestRoll:
 
-    number_by_category = {
-        1: 'Science',
-        2: 'Rock',
-        3: 'Sports',
-        4: 'Sports',
-        5: 'Rock',
-        6: 'Science',
-    }
+    categories = [
+        'Science',
+        'Rock',
+        'Sports',
+        'Sports',
+        'Rock',
+        'Science',
+        'Pop',
+    ]
 
     def test_roll_for_science(self):
         game = Game()
         game.add('Chet')
 
         builtins.print = MockPrint()
-        for number, category in self.number_by_category.items():
+        for number, category in enumerate(self.categories, start=1):
             game.roll(number)
             assert f'The category is {category}' in print.strings
             print.clear()
