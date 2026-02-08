@@ -1,20 +1,18 @@
 # Trivia Kata for Python 3
 
-This is basically a copy of https://github.com/jbrains/trivia/ except that it's
+This is a copy of https://github.com/jbrains/trivia/ except that it's
 just the Python one, and I changed it to be used with Python 3.
 
-## How to setup:
+## Pre-requisites:
 
-Create a virtualenv with Python 3.* (tested in Python3.6) and install `pytest`.
+- Install `uv` if you don't have it.
 
 ## How to run:
-
-Just use the `Makefile`:
 
 - `make` to run unit tests
 - `make gold` to run golden test
 
-Alternatively, read the Makefile and execute the commands inside, it's just 4 lines.
+Alternatively, read the Makefile and run the commands inside.
 
 ## How to kata this kata:
 
